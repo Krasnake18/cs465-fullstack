@@ -1,13 +1,32 @@
-<div style="border: 1px solid #ccc; padding: 16px; margin: 12px 0; border-radius: 8px;">
-  <h2>{{ trip.name }}</h2>
-  <img
-  [src]="'assets/images/' + trip.image"
-  [alt]="trip.name"
-  style="width: 100%; height: 220px; object-fit: cover;"
->
-  <p>{{ trip.resort }}</p>
-  <p>{{ trip.length }} — {{ trip.perPerson }} per person</p>
-  <p>{{ trip.description }}</p>
+<div style="border: 1px solid #ccc; padding: 16px; margin-bottom: 20px; border-radius: 8px;">
 
-  <button (click)="editTrip(trip)" class="btn btn-info">Edit Trip</button>
+    <!-- Trip Name -->
+    <h2>{{ trip.name }}</h2>
+
+    <!-- Trip Image -->
+    <img
+        [src]="'assets/images/' + trip.image"
+        [alt]="trip.name"
+        style="width: 100%; height: 220px; object-fit: cover;"
+    >
+
+    <!-- Resort Information -->
+    <p>{{ trip.resort }}</p>
+
+    <!-- Trip Length and Price -->
+    <p>
+        {{ trip.length }} — {{ trip.perPerson }} per person
+    </p>
+
+    <!-- Trip Description -->
+    <p>{{ trip.description }}</p>
+
+    <!-- Edit Trip Button - Only visible when logged in -->
+    <button
+        class="btn btn-info"
+        (click)="editTrip(trip)"
+        *ngIf="isLoggedIn()">
+        Edit Trip
+    </button>
+
 </div>

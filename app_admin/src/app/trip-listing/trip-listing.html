@@ -1,9 +1,31 @@
-<button class="btn btn-info mb-3" (click)="addTrip()">Add Trip</button>
+<div class="container mt-4">
 
-<p>{{ message }}</p>
+    <!-- Add Trip Button - Only visible when logged in -->
+    <div class="mb-4">
+        <button
+            class="btn btn-info"
+            (click)="addTrip()"
+            *ngIf="isLoggedIn()">
+            Add Trip
+        </button>
+    </div>
 
-<div class="row">
-  <div *ngFor="let trip of trips" class="col-md-4 mb-3">
-    <app-trip-card [trip]="trip"></app-trip-card>
-  </div>
+    <!-- Display number of available trips -->
+    <p>There are {{ trips.length }} trips available.</p>
+
+    <!-- Display Trip Cards -->
+    <div class="row">
+
+        <div
+            class="col-md-4 mb-4"
+            *ngFor="let trip of trips">
+
+            <app-trip-card
+                [trip]="trip">
+            </app-trip-card>
+
+        </div>
+
+    </div>
+
 </div>
